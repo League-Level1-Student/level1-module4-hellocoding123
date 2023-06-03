@@ -16,15 +16,15 @@ public class ChuckleClicker implements MouseListener {
 		clicker.makeButtons();
 		
 	}
-
+	
+	JFrame frame = new JFrame();
+	JPanel panel = new JPanel();
+	JButton joke = new JButton();
+	JButton punchline = new JButton();
+	
 	private void makeButtons() {
 		// TODO Auto-generated method stub
-		JOptionPane.showMessageDialog(null, "MakeButtonsnsnsnnsnns");
 		
-		JFrame frame = new JFrame();
-		JPanel panel = new JPanel();
-		JButton joke = new JButton();
-		JButton punchline = new JButton();
 		panel.add(joke);
 		panel.add(punchline);
 		frame.add(panel);
@@ -44,8 +44,17 @@ public class ChuckleClicker implements MouseListener {
 	}
 
 	@Override
-	public void mousePressed(MouseEvent e) {
+	public void mousePressed(MouseEvent event) {
 		// TODO Auto-generated method stub
+		
+		if(event.getSource() == joke) {
+			JOptionPane.showMessageDialog(null, "What do you call a cow with four legs?");
+		}
+		else if(event.getSource() == punchline) {
+			JOptionPane.showMessageDialog(null, "A cow.");
+		}
+
+
 		
 	}
 
