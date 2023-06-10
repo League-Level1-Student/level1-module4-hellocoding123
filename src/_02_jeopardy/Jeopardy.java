@@ -113,12 +113,14 @@ public class Jeopardy implements ActionListener {
 		// If the buttonPressed was the firstButton
 		if(e.getSource() == firstButton) {
 			askQuestion("does a human have two legs?", "yes", 300);
+			firstButton.setText(null);
 		}
 		else if(e.getSource() == secondButton) {
 			askQuestion("who is joe biden?", "the president", 200);
+			secondButton.setText(null);
 		}
 			// Call the askQuestion() method
-		
+	
 		// Complete the code in the askQuestion() method. When you play the game, the score should change.
 
 		// If the buttonPressed was the secondButton
@@ -134,22 +136,24 @@ public class Jeopardy implements ActionListener {
 		// Use the playJeopardyTheme() method to play music while the use thinks of an answer
 		playJeopardyTheme();
 		// Remove this temporary message and replace it with a pop-up that asks the user the question
-		String answer = JOptionPane.showMessageDialog(null, question);
+		String answer = JOptionPane.showInputDialog(question);
 		
 		// Stop the theme music when they have entered their response.
 		stopJeopardyTheme();
 		// If the answer is correct
 
-		if() {
+		if(answer.equals(correctAnswer)) {
 			// Increase the score by the prizeMoney
 			score += prizeMoney;
 			// Pop up a message to tell the user they were correct
+			JOptionPane.showMessageDialog(null, "Correct! :)");
 		}
 		// Otherwise
 		else {
 			// Decrement the score by the prizeMoney
 			score -= prizeMoney;
 			// Pop up a message to tell the user they were wrong and give them the correct answer
+			JOptionPane.showMessageDialog(null, "You are wrong :(");
 		}
 		// Call the updateScore() method
 		updateScore();
