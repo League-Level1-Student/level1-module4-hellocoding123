@@ -5,9 +5,11 @@ import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
+import java.util.Random;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import game_tools.Sound;
@@ -28,6 +30,7 @@ public class FortuneTeller extends JPanel implements Runnable, MouseListener {
         // 3. Complete the begin() method in the FortuneTellerRunner class
         
         // 4. add a mouse listener to the frame
+        frame.addMouseListener(this);
         
     }
 
@@ -37,12 +40,12 @@ public class FortuneTeller extends JPanel implements Runnable, MouseListener {
         int mouseY = e.getY();
         
         // 5. Print the mouseX variable
-        
+        System.out.println(mouseX + ", " + mouseY);
         // 6. Add the mouseY variable to the previous line so that it prints out too (no new line)
         
         // 7. Adjust your secret location co-ordinates here:
-        int secretLocationX = 0;
-        int secretLocationY = 0;
+        int secretLocationX = 63;
+        int secretLocationY = 189;
         
         // If the mouse co-ordinates and secret location are close, we'll let them ask a question.
         if (areClose(mouseX, secretLocationX) && areClose(mouseY, secretLocationY)) {
@@ -50,8 +53,40 @@ public class FortuneTeller extends JPanel implements Runnable, MouseListener {
             //    play("creepy-noise.wav");
             
             // 9. Play the sound
-            
+            play("creepy-noise.wav");
             // 10. Insert your completed Magic 8 ball code here
+         // 1. Make a main method that includes all the steps below….
+
+        	// 2. Make a variable that will hold a random number and put a random number into this variable using "new Random().nextInt(4)"
+        			
+        		int random = new Random().nextInt(4);
+        			
+        	// 3. Print out this variable
+        			System.out.println(random);
+        	// 4. Get the user to enter a question for the 8 ball
+        			JOptionPane.showInputDialog("Ask the magic 8 ball a yes or no question");
+        	// 5. If the random number is 0
+        			if (random == 0) {
+        				
+        	// -- tell the user "Yes"
+        				JOptionPane.showMessageDialog(null, "Yes");
+        			}
+        	// 6. If the random number is 1
+        			else if (random == 1) {
+        	// -- tell the user "No"
+        				JOptionPane.showMessageDialog(null, "No");
+        			}
+        	// 7. If the random number is 2
+        			else if (random == 2) {	
+        	// -- tell the user "Maybe you should ask Google?"
+        				JOptionPane.showMessageDialog(null, "Maybe you should ask Google");
+        			}
+        	// 8. If the random number is 3
+        			else {
+        	// -- write your own answer
+        				JOptionPane.showMessageDialog(null, "Try again");
+        			}
+        	
             
         }
 
