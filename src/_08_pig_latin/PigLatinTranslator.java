@@ -1,6 +1,46 @@
 package _08_pig_latin;
 
-public class PigLatinTranslator {
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+import game_tools.Sound;
+
+public class PigLatinTranslator implements MouseListener {
+	
+	JFrame frame = new JFrame();
+	JPanel panel = new JPanel();
+	JTextField text1 = new JTextField("English");
+	JTextField text2 = new JTextField("Pig Latin");
+	JButton button1 = new JButton(">");
+	JButton button2 = new JButton("<");
+	JButton speak = new JButton("Speak");
+	
+	
+	public PigLatinTranslator() {
+		
+		frame.add(panel);
+		panel.add(text1);
+		panel.add(button1);
+		panel.add(button2);
+		panel.add(text2);
+		panel.add(speak);
+		
+		frame.setSize(550, 75);
+		button1.addMouseListener(this);
+		button2.addMouseListener(this);
+		speak.addMouseListener(this);
+		text1.setColumns(12);
+		text2.setColumns(12);
+		frame.pack();
+		frame.setVisible(true);
+		
+	}
+	
     /**
      * Method to translate a english to pig latin.
      * 
@@ -120,4 +160,46 @@ public class PigLatinTranslator {
                 return i;
         return 0;
     }
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+		if (e.getSource() == button1) {
+			text2.setText(translateEnglishToPigLatin(text1.getText()));
+		}
+		
+		if (e.getSource() == button2) {
+			text1.setText(translatePigLatinToEnglish(text2.getText()));
+		}
+		
+		if (e.getSource() == speak) {
+			Sound.speak(text2.getText());
+		}
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 }
