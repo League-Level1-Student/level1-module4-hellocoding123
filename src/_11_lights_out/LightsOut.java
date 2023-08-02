@@ -1,9 +1,11 @@
 package _11_lights_out;
 
 import java.awt.Color;
+import java.awt.GridLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -20,28 +22,66 @@ import javax.swing.JPanel;
 public class LightsOut implements MouseListener {
 
 	JPanel gamePanel = new JPanel();
+	JFrame frame = new JFrame();
 
 	public LightsOut() {
 
 		/** PART 1. CREATE YOUR LIGHT BOARD **/
 		//1. Make your gamePanel a 5x5 grid with setLayout(new GridLayout(5, 5));
-		
+			gamePanel.setLayout(new GridLayout(5, 5));
 		
 			//2. Add 25 JLabels to your gamePanel (these are your lights)
-
+			/*
+			JLabel light1 = new JLabel();
+			JLabel light2 = new JLabel();
+			JLabel light3 = new JLabel();
+			JLabel light4 = new JLabel();
+			JLabel light5 = new JLabel();
+			JLabel light6 = new JLabel();
+			JLabel light7 = new JLabel();
+			JLabel light8 = new JLabel();
+			JLabel light9 = new JLabel();
+			JLabel light10 = new JLabel();
+			JLabel light11 = new JLabel();
+			JLabel light12 = new JLabel();
+			JLabel light13 = new JLabel();
+			JLabel light14 = new JLabel();
+			JLabel light15 = new JLabel();
+			JLabel light16 = new JLabel();
+			JLabel light17 = new JLabel();
+			JLabel light18 = new JLabel();
+			JLabel light19 = new JLabel();
+			JLabel light20 = new JLabel();
+			JLabel light21 = new JLabel();
+			JLabel light22 = new JLabel();
+			JLabel light23 = new JLabel();
+			JLabel light24 = new JLabel();
+			JLabel light25 = new JLabel();
+			*/
+			
+			for(int i=0; i<26; i++) {
+				
+				JLabel light = new JLabel();
+				gamePanel.add(light);
 			//3. Use setText() to add a position number to each light (0-24).
-
+				light.setText(String.valueOf(i));
+			
+			
 			//4. Set the background of each light to LIGHT_GRAY
+				//light.setBackground(LIGHT_GRAY);
 			// - you will also have to set the background to opaque.
 			// - Use light.setOpaque(true);
+				light.setOpaque(true);
 
 			//5. Add a mouseListener to each light
-		
+				light.addMouseListener(this);
+			}
 		
 		//6. Add your panel to a frame
-
+			frame.add(gamePanel);
 		//7. Set the size of the frame
-
+			frame.setSize(400,400);
+			frame.setVisible(true);
 	}
 
 	@Override
