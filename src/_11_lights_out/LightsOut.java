@@ -7,6 +7,7 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -59,16 +60,15 @@ public class LightsOut implements MouseListener {
 			JLabel light25 = new JLabel();
 			*/
 			
-			for(int i=0; i<26; i++) {
+			for(int i=0; i<25; i++) {
 				
 				JLabel light = new JLabel();
 				gamePanel.add(light);
 			//3. Use setText() to add a position number to each light (0-24).
-				light.setText(String.valueOf(i));
-			
+				light.setText(String.valueOf(i + 1));
 			
 			//4. Set the background of each light to LIGHT_GRAY
-				//light.setBackground(LIGHT_GRAY);
+				light.setBackground(Color.LIGHT_GRAY);
 			// - you will also have to set the background to opaque.
 			// - Use light.setOpaque(true);
 				light.setOpaque(true);
@@ -88,18 +88,31 @@ public class LightsOut implements MouseListener {
 	public void mouseClicked(MouseEvent e) {
 		/** PART 2: TOGGLE NEIGHBORING LIGHTS **/
 		// 1. Get the light that was clicked on `(JLabel) e.getSource`
-
+		JLabel light = (JLabel) e.getSource();
 		// 2. Get the number (position) of the light
-
+		int pos = Integer.parseInt(light.getText())-1;
 		// 3. Now use the makeMove method to code which lights turn on and off.
-
+		makeMove(pos);
 		// 4.Check if the player has won (e.g. all the lights are off)
 		// ---- HINT: use `getLightAtPosition` to get the light at each position
 		// ---------- use 'getBackground' to get the light color
-
+		boolean won = true;
+		for(int i = 0; i <25; i++) {
+			
+			JLabel light1 = getLightAtPosition(i);
+			Color color = light1.getBackground();
+			if(color == Color.LIGHT_GRAY) {
+				won = false;
+				System.out.println("gray");
+				break;
+			}
+		}
+		if(won) {
+			JOptionPane.showMessageDialog(null, "You won!");
+		}
 		/** PART 3: RANDOMIZE YOUR BOARD **/
 		// Now that your game works can you make the game start with some lights on?
-
+		
 	}
 
 	void makeMove(int pos) {
@@ -141,7 +154,7 @@ public class LightsOut implements MouseListener {
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-
+		
 	}
 
 	@Override
